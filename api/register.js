@@ -11,12 +11,14 @@ export default async function handler(req, res) {
   await fetch("https://api.resend.com/emails", {
     method: "POST",
     headers: { Authorization: `Bearer ${process.env.RESEND_KEY}`, "Content-Type": "application/json" },
-    body: JSON.stringify({
-      from: "Bag.ID <no-reply@bag.id>",
-      to: email,
-      subject: "Your Bag.ID tag is active",
-      html: `<p>Your Bag.ID code <strong>${tag_code}</strong> is now active.</p>`
-    })
+    
+body: JSON.stringify({
+  from: "Bag.ID <no-reply@bag.id>",
+  to: email,
+  subject: "Your Bag.ID tag is active",
+  html: ownerConfirmationEmail({ tag_code })
+})
+
   });
   res.status(200).json({ ok: true });
 }
