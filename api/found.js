@@ -38,13 +38,19 @@ export default async function handler(req, res) {
     await fetch("https://api.resend.com/emails", {
       method: "POST",
       headers: { Authorization: `Bearer ${process.env.RESEND_KEY}`, "Content-Type": "application/json" },
-      body: JSON.stringify({
-        from: "Bag.ID <no-reply@bag.id>",
-        to: owner.email,
-        subject: "Someone found your bag",
-        html: `<p>A finder sent this message about your bag <strong>${fields.tag_code}</strong>:</p>
-               <p>${fields.message || "No message provided."}</p>`
-      })
+
+body: JSON.stringify({
+  from: "Bag.ID <no-reply@bag.id>",
+  to: owner.email,
+  subject: "Someone found your bag",
+  html: finderReportEmail({
+    tag_code: fields.tag_code,
+    message: fields.message,
+    photo_url
+  })
+})
+
+      
     });
   }
 
