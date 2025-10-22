@@ -5,12 +5,15 @@ export default async function handler(req,res){
   await fetch("https://api.resend.com/emails",{
     method:"POST",
     headers:{Authorization:`Bearer ${process.env.RESEND_KEY}`,"Content-Type":"application/json"},
-    body:JSON.stringify({
-      from:"Bag.ID <no-reply@bag.id>",
-      to:"support@bag.id",
-      subject:`New contact form message from ${name}`,
-      html:`<p>From: ${name} (${email})</p><p>${message}</p>`
-    })
+
+body: JSON.stringify({
+  from: "Bag.ID <no-reply@bag.id>",
+  to: "support@bag.id",
+  subject: `New contact form message from ${name}`,
+  html: supportNotificationEmail({ name, email, message })
+})
+
+    
   });
   res.status(200).json({ok:true});
 }
