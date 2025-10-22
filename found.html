@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Report a found bag — Bag.ID</title>
+  <meta name="description" content="Found a bag with a Bag.ID tag? You can safely notify the owner here — no login or app needed." />
+  <link rel="stylesheet" href="/style.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="container row between center">
+      <a class="brand" href="/" aria-label="Bag.ID home">
+        <svg class="wordmark" viewBox="0 0 220 32" aria-hidden="true">
+          <text x="0" y="24" font-family="system-ui, -apple-system, Segoe UI, Roboto, sans-serif"
+            font-size="24" font-weight="700" letter-spacing="0.5">BAG.ID</text>
+        </svg>
+      </a>
+      <nav class="nav">
+        <a href="/">Home</a>
+        <a href="/register.html">Activate tag</a>
+      </nav>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="container narrow">
+      <h1>Report a found bag</h1>
+      <p class="lead">
+        Thank you for taking a moment to help. This message will go directly to the owner.
+        Your details are used only for this handover and are automatically deleted after 7 days.
+      </p>
+
+      <form id="foundForm" class="form card" method="post" action="/api/found.js">
+        <label for="tag_code">Bag.ID code on the tag</label>
+        <input id="tag_code" name="tag_code" type="text" placeholder="BAG-XXX-123" required />
+
+        <label for="finder_email">Your email (optional)</label>
+        <input id="finder_email" name="finder_email" type="email" placeholder="optional" />
+
+        <label for="message">Message to owner</label>
+        <textarea id="message" name="message" rows="4" placeholder="Example: Found at Sydney Airport, left at the information desk." required></textarea>
+
+        <label for="photo">Upload a photo (optional)</label>
+        <input id="photo" name="photo" type="file" accept="image/*" />
+
+        <div class="form-actions">
+          <button class="btn btn-primary" type="submit">Send Message</button>
+        </div>
+
+        <p class="fine">
+          By sending, you agree to our <a href="/privacy.html">privacy policy</a>.<br />
+          Finder information is automatically deleted after 7 days — always.
+        </p>
+      </form>
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <div class="container row between top">
+      <div class="foot-brand">
+        <strong>Bag.ID</strong><br />
+        <span class="muted">A Pebble System</span>
+        <p class="copyright">© 2025 Bag.ID — A Pebble System</p>
+      </div>
+      <div class="foot-links">
+        <a href="/privacy.html">Privacy</a>
+        <a href="/terms.html">Terms</a>
+        <a href="/contact.html">Contact</a>
+        <a href="https://pebble.id" rel="noopener">About Pebble</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const form = document.getElementById('foundForm');
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const formData = new FormData(form);
+      const res = await fetch('/api/found.js', {
+        method: 'POST',
+        body: formData
+      });
+      if (res.ok) {
+        window.location.href = '/thanks.html';
+      } else {
+        alert('There was a problem sending your message. Please try again.');
+      }
+    });
+  </script>
+</body>
+</html>
