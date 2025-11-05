@@ -22,10 +22,7 @@
   <header class="site-header">
     <div class="container row between center">
       <a class="brand" href="/" aria-label="Bag.ID home">
-        <!-- Simple wordmark (SVG so it stays crisp) -->
-        <svg class="wordmark" viewBox="0 0 220 32" aria-hidden="true">
-          <text x="0" y="24" font-family="system-ui, -apple-system, Segoe UI, Roboto, sans-serif" font-size="24" font-weight="700" letter-spacing="0.5">BAG.ID</text>
-        </svg>
+        <img src="/images/logo_640X184_TBG.png" alt="Bag.ID logo" class="logo" style="height:40px; width:auto;" />
       </a>
       <nav class="nav">
         <a href="#how">How it works</a>
@@ -57,15 +54,22 @@
         </div>
       </div>
       <div class="hero-media">
-        <!-- Placeholder image block; swap for a real render or photo -->
         <figure class="device">
-          <img src="/images/hero-tag-on-handle.jpg" alt="A Bag.ID tag attached to a luggage handle next to a phone displaying the scan page." />
+          <img src="/images/Airport_1.png" alt="Traveler at airport with Bag.ID tag attached to luggage." />
         </figure>
       </div>
     </div>
   </section>
 
-  <!-- Benefits (Hanshow-like clarity: 3 concise blocks) -->
+  <!-- Gallery band -->
+  <section class="gallery band">
+    <div class="container grid two">
+      <figure><img src="/images/Airport_2.png" alt="Bag.ID tag at customs checkpoint." /></figure>
+      <figure><img src="/images/Airport-3.png" alt="Bag.ID tag beside traveler’s seat overlooking runway." /></figure>
+    </div>
+  </section>
+
+  <!-- Benefits -->
   <section id="how" class="benefits">
     <div class="container">
       <div class="section-head">
@@ -76,7 +80,6 @@
       <div class="cards grid three">
         <article class="card">
           <div class="icon" aria-hidden="true">
-            <!-- Attach icon -->
             <svg viewBox="0 0 24 24"><path d="M7 7l10 10M7 17l10-10" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round"/></svg>
           </div>
           <h3>Attach</h3>
@@ -85,7 +88,6 @@
 
         <article class="card">
           <div class="icon" aria-hidden="true">
-            <!-- Scan icon -->
             <svg viewBox="0 0 24 24"><path d="M4 7V4h3M20 7V4h-3M4 17v3h3M20 17v3h-3M3 12h18" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round"/></svg>
           </div>
           <h3>Scan</h3>
@@ -94,7 +96,6 @@
 
         <article class="card">
           <div class="icon" aria-hidden="true">
-            <!-- Reunite icon -->
             <svg viewBox="0 0 24 24"><path d="M5 12a7 7 0 0 1 14 0v6H5v-6zM9 18v-3m6 3v-3" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round"/></svg>
           </div>
           <h3>Reunite</h3>
@@ -109,18 +110,9 @@
     <div class="container">
       <h2>Privacy, by design</h2>
       <ul class="checks">
-        <li>
-          <span class="tick" aria-hidden="true">✓</span>
-          Finder details are <strong>automatically deleted after 7 days</strong> — always.
-        </li>
-        <li>
-          <span class="tick" aria-hidden="true">✓</span>
-          No tracking. No accounts. No ads. Just a secure message relay.
-        </li>
-        <li>
-          <span class="tick" aria-hidden="true">✓</span>
-          Your contact details are never shown to a finder unless you choose to share them.
-        </li>
+        <li><span class="tick">✓</span> Finder details are <strong>automatically deleted after 7 days</strong> — always.</li>
+        <li><span class="tick">✓</span> No tracking. No accounts. No ads. Just a secure message relay.</li>
+        <li><span class="tick">✓</span> Your contact details are never shown to a finder unless you choose to share them.</li>
       </ul>
       <p class="fine"><a href="/privacy.html">Read the full privacy policy</a></p>
     </div>
@@ -201,7 +193,6 @@
     </div>
   </footer>
 
-  <!-- (Optional) Smooth skip for internal anchors -->
   <script>
     document.querySelectorAll('a[href^="#"]').forEach(a => {
       a.addEventListener('click', e => {
