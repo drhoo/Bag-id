@@ -51,7 +51,7 @@ img{ max-width:100%; display:block;}
 .row.top{ align-items: flex-start; }
 
 .grid{ display:grid; gap:24px; }
-.grid.two{ grid-template-columns: 1fr; }
+.grid.two{ grid-template-columns: 1fr; border-radius: 25px; }
 .grid.three{ grid-template-columns: 1fr; }
 
 @media (min-width: 840px){
