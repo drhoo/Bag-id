@@ -178,5 +178,5 @@ a:hover{ text-decoration: underline; }
 
 
 .figure {
-  border-radius: 25px;
+  border-radius: var(--radius lg);
 }
