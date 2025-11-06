@@ -29,7 +29,7 @@
   --maxw: 1120px;
 }
 
-* { box-sizing: border-box; border-radius: 25 px; }
+* { box-sizing: border-box; }
 html,body { height:100%; }
 body{
   margin:0;
