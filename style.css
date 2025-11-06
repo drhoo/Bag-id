@@ -182,12 +182,24 @@ img {
   border-radius: 0;
 }
 
-/* only round photos */
+/* Subtle soft-edge enhancement for rounded photos */ 
+
 .rounded {
   border-radius: 24px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.12);
+  overflow: hidden;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+/* Gentle lift when hovered — optional */
+
+.rounded:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.18);
 }
 
 /* ensure the logo keeps its natural edges */
+
 .logo {
   border-radius: 0;
   display: block;
