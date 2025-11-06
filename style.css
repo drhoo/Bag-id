@@ -41,7 +41,7 @@ body{
   -moz-osx-font-smoothing: grayscale;
 }
 
-img{ max-width:100%; display:block; }
+img{ max-width:100%; display:block; border-radius: var(--radius-lg);}
 
 .container{ width:100%; max-width: var(--maxw); margin:0 auto; padding: 0 20px; }
 .row{ display:flex; gap: 16px; flex-wrap: wrap; }
