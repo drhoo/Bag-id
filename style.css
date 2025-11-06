@@ -175,3 +175,5 @@ a:hover{ text-decoration: underline; }
 
 .center{ text-align:center; }
 .fine{ color: var(--muted); font-size: 14px; }
+
+.photo  {border-radius: var(--radius-lg);}
