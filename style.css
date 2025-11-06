@@ -177,6 +177,4 @@ a:hover{ text-decoration: underline; }
 .fine{ color: var(--muted); font-size: 14px; }
 
 
-.figure {
-  border-radius: var(--radius lg);
-}
+
