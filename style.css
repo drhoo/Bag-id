@@ -177,4 +177,21 @@ a:hover{ text-decoration: underline; }
 .fine{ color: var(--muted); font-size: 14px; }
 
 
+/* default: no rounding */
+img {
+  border-radius: 0;
+}
+
+/* only round photos */
+.rounded {
+  border-radius: 24px;
+}
+
+/* ensure the logo keeps its natural edges */
+.logo {
+  border-radius: 0;
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
 
