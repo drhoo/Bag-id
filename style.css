@@ -1,4 +1,4 @@
-/* Bag.ID – Unified Styles (Hanshow-like clarity; Pebble tone) */
+-radius/* Bag.ID – Unified Styles (Hanshow-like clarity; Pebble tone) */
 
 :root {
   /* Core brand palette */
@@ -29,7 +29,7 @@
   --maxw: 1120px;
 }
 
-* { box-sizing: border-box; }
+* { box-sizing: border-box; border-radius: 25 px; }
 html,body { height:100%; }
 body{
   margin:0;
