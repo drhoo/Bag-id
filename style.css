@@ -206,4 +206,22 @@ img {
   max-width: 100%;
   height: auto;
 }
+/* Lifestyle gallery */
+.lifestyle {
+  padding: 60px 0;
+  background: var(--band);
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+
+.lifestyle .grid {
+  gap: 28px;
+}
+
+.lifestyle figure img {
+  width: 100%;
+  height: auto;
+  border-radius: var(--radius-lg);
+  object-fit: cover;
+}
 
