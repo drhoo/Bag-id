@@ -1,6 +1,19 @@
 /* Bag.ID – Unified Styles (Hanshow-like clarity; Pebble tone) */
 
-:root{
+:root {
+  /* Core brand palette */
+  --bag-orange: #b64c1b; /* Pantone 7584 C – grounded, trustworthy orange */
+  --bag-charcoal: #222222;
+  --bag-offwhite: #f8f7f5;
+  --bag-grey: #666666;
+
+  /* Accent and button colors */
+  --primary-color: var(--bag-orange);
+  --accent-color: var(--bag-charcoal);
+  --text-color: var(--bag-charcoal);
+  --background-color: var(--bag-offwhite);
+
+  
   --bg: #ffffff;
   --text: #1f2937;          /* slate-ish */
   --muted: #6b7280;
