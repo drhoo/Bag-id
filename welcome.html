@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Bag.ID — Welcome</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap" rel="stylesheet" />
+  <!-- Use your site stylesheet if present -->
+  <link rel="stylesheet" href="/style.css" />
+  <style>
+    :root{
+      --orange:#b64c1b;
+      --blue:#476b8f; /* dusty steel */
+      --ink:#111;
+      --muted:#666;
+      --bg:#fff;
+      --band:#f6f7f8;
+      --line:#e7e7e7;
+      --radius:16px;
+    }
+    /* Minimal base so it works standalone too */
+    html,body{margin:0;padding:0;background:var(--bg);color:var(--ink);font:16px/1.5 Poppins,system-ui,Segoe UI,Roboto,Arial,sans-serif}
+    a{color:var(--blue);text-decoration:none}
+    a:hover{text-decoration:underline}
+    .wrap{max-width:980px;margin:auto;padding:28px 20px}
+    .nav{display:flex;align-items:center;justify-content:space-between;gap:18px;margin-bottom:14px}
+    .brand{display:flex;align-items:center;gap:10px;font-weight:700;font-size:22px;color:var(--ink);text-decoration:none}
+    .dot{width:14px;height:14px;border-radius:50%;background:var(--orange);display:inline-block}
+    .links a{margin-left:16px;font-weight:500}
+    .hero{display:grid;grid-template-columns:1.1fr .9fr;gap:28px;align-items:center;padding:28px 0}
+    .card{background:var(--band);border:1px solid var(--line);border-radius:var(--radius);padding:22px}
+    h1{font-size:34px;line-height:1.2;margin:0 0 8px}
+    h2{font-size:22px;margin:18px 0 10px}
+    p{margin:10px 0}
+    .quiet{color:var(--muted)}
+    .cta{display:flex;gap:12px;flex-wrap:wrap;margin-top:10px}
+    .btn{display:inline-block;background:var(--blue);color:#fff;padding:10px 16px;border-radius:12px;font-weight:600}
+    .btn.secondary{background:#fff;color:var(--blue);border:1px solid var(--blue)}
+    .list{margin:10px 0 0 18px}
+    .band{background:var(--band);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+    .grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+    .foot{font-size:13px;color:var(--muted);padding:26px 0}
+    .pill{display:inline-flex;align-items:center;gap:8px;padding:8px 12px;border:1px solid var(--line);border-radius:999px;background:#fff}
+    .pill .mini-dot{width:10px;height:10px;border-radius:50%;background:var(--orange)}
+    @media (max-width:880px){
+      .hero{grid-template-columns:1fr}
+      .grid{grid-template-columns:1fr}
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top -->
+  <header class="wrap nav" role="banner">
+    <a class="brand" href="/"><span class="dot" aria-hidden="true"></span>Bag<span style="margin:0 .12em">·</span>ID</a>
+    <nav class="links" aria-label="Primary">
+      <a href="/">Home</a>
+      <a href="/privacy.html">Privacy</a>
+      <a href="mailto:hello@bag.id">Contact</a>
+    </nav>
+  </header>
+
+  <!-- Welcome / Explainer -->
+  <main class="wrap hero" role="main">
+    <section>
+      <div class="pill" aria-hidden="true"><span class="mini-dot"></span><strong>Welcome</strong></div>
+      <h1>Thanks for scanning — this is <span class="quiet">Bag.ID</span></h1>
+      <p><strong>Bag.ID helps people keep what’s theirs and return what’s lost</strong> — without tracking, profiling, or selling anyone’s data.</p>
+      <p>Every Bag.ID tag has a unique QR and a simple orange dot. When it’s scanned, we provide a safe way for a finder to send a message to the owner. That’s it.</p>
+
+      <h2>How it works</h2>
+      <ul class="list">
+        <li><strong>Scan</strong> the QR or enter the code on <a href="/">bag.id</a>.</li>
+        <li><strong>Send a message</strong> to the owner through our secure form (no account needed).</li>
+        <li><strong>Coordinate return</strong> privately — owner details are never shown publicly.</li>
+      </ul>
+
+      <div class="cta">
+        <a class="btn" href="/">Go to the main site</a>
+        <a class="btn secondary" href="/privacy.html">Read our privacy promise</a>
+      </div>
+
+      <p class="quiet">If you’re a finder and need help, email <a href="mailto:hello@bag.id">hello@bag.id</a>.</p>
+    </section>
+
+    <aside>
+      <div class="card">
+        <h2>Our privacy promise</h2>
+        <p>We only keep what’s needed to connect a finder with an owner. No location tracking, no ads, no profiling.</p>
+        <p>Want to verify a bag without a QR? Look for the <strong>orange dot</strong> inside the bag — it shows a simple <strong>CCV number</strong> used for backup verification.</p>
+        <p class="quiet">Bag.ID is designed to be simple, trusted, and human-centred.</p>
+      </div>
+    </aside>
+  </main>
+
+  <!-- Help band -->
+  <section class="band">
+    <div class="wrap grid" style="padding:22px 20px;">
+      <div class="card">
+        <h2>If you found this bag</h2>
+        <p>Use the scan link you just opened to send the owner a message. If you prefer email, contact us and include the bag’s code or CCV.</p>
+        <p><a href="mailto:hello@bag.id" class="btn secondary">Contact support</a></p>
+      </div>
+      <div class="card">
+        <h2>If this is your bag</h2>
+        <p>You can reply to the finder safely through Bag.ID. Keep your tag attached and consider adding a spare tag for peace of mind.</p>
+        <p><a href="/" class="btn">Visit bag.id</a></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="wrap foot" role="contentinfo">
+    <div>© 2025 Bag.ID — A Pebble System. All rights reserved.</div>
+    <div class="quiet">Bag.ID wordmark and orange dot device are distinctive brand elements used under license.</div>
+  </footer>
+
+</body>
+</html>
