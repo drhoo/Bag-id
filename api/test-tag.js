@@ -1,3 +1,5 @@
+import { testConfirmationEmail } from "../lib/emails.js";
+
 import { Resend } from "resend";
 
 // initialise resend
