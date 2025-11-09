@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Test Your Bag.ID Tag</title>
-  <meta name="description" content="Check that your Bag.ID tag is active. This test doesn’t track or locate anything — it simply confirms your tag is registered and ready." />
+  <meta name="description" content="Confirm that your Bag.ID tag is active and registered. This test never tracks or logs location — it simply sends a reassurance email that your tag is live." />
   <link rel="icon" href="/favicon.ico" />
   <link rel="stylesheet" href="/style.css" />
 </head>
@@ -30,21 +30,27 @@
       <div class="hero-copy">
         <h1>Test your <span class="quiet">Bag.ID</span> tag</h1>
         <p class="lead">
-          You can check that your tag is active and registered — without tracking or revealing any data.
-          It’s a simple system heartbeat that reassures you everything is ready before you travel.
+          Check that your tag is active and registered — without sharing or revealing anything.
+          It’s a simple reassurance before you travel.
         </p>
 
         <form id="test-form" class="card" style="max-width:400px; margin-top:20px;">
-          <label for="bagid"><strong>Enter your Bag.ID code</strong></label><br/>
-          <input type="text" id="bagid" name="bagid" placeholder="e.g. BAG-112-879" required
-                 style="width:100%; padding:10px; margin:8px 0 12px; border:1px solid var(--line); border-radius:var(--radius-sm); font-size:16px;">
+          <label for="bagid"><strong>Enter your Bag.ID code</strong></label><br />
+          <input
+            type="text"
+            id="bagid"
+            name="bagid"
+            placeholder="e.g. BAG-112-879"
+            required
+            style="width:100%; padding:10px; margin:8px 0 12px; border:1px solid var(--line); border-radius:var(--radius-sm); font-size:16px;"
+          />
           <button type="submit" class="btn btn-primary btn-block">Send Test Confirmation</button>
           <p id="result" class="fine" style="margin-top:10px;"></p>
         </form>
 
         <p class="fine" style="margin-top:24px;">
-          This test does not track, locate, or store anything beyond the confirmation email.
-          You’ll receive a message confirming your tag is active within moments.
+          This page does not track, locate, or store anything beyond sending a single confirmation email.
+          You’ll receive an email confirming your tag is active within a few moments.
         </p>
       </div>
 
@@ -72,30 +78,33 @@
     </div>
   </footer>
 
+  <!-- Script -->
   <script>
     document.getElementById("test-form").addEventListener("submit", async (e) => {
       e.preventDefault();
-      const bagid = document.getElementById("bagid").value.trim();
+      const bagid = document.getElementById("bagid").value.trim().toUpperCase();
       const result = document.getElementById("result");
 
       result.textContent = "Sending test confirmation...";
       result.style.color = "var(--muted)";
 
       try {
-        const res = await fetch("/api/test-tag.js", {
+        const res = await fetch("/api/test-tag", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ bagid })
+          body: JSON.stringify({ bagid }),
         });
 
         if (res.ok) {
-          result.textContent = "✅ Test email sent. Check your inbox for confirmation.";
+          result.textContent = "✅ Test email sent — check your inbox for confirmation.";
           result.style.color = "green";
         } else {
-          result.textContent = "Something went wrong — please try again.";
+          const data = await res.json();
+          result.textContent = data.message || "Something went wrong — please try again.";
           result.style.color = "red";
         }
       } catch (err) {
+        console.error(err);
         result.textContent = "Network error — please try again later.";
         result.style.color = "red";
       }
