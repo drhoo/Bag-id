@@ -5,6 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Bag.ID Test Confirmed</title>
   <meta name="description" content="Your Bag.ID tag is active and registered. No tracking, no logging — just quiet confirmation that your tag is ready if needed." />
+  <meta property="og:title" content="Bag.ID Test Confirmed" />
+  <meta property="og:description" content="Your Bag.ID tag is active and registered." />
+  <meta property="og:image" content="https://bag.id/images/test-confirmed-hero.png" />
+  <meta property="og:type" content="website" />
   <link rel="icon" href="/favicon.ico" />
   <link rel="stylesheet" href="/style.css" />
 </head>
@@ -24,16 +28,24 @@
     </div>
   </header>
 
+  <!-- Hero Image -->
+  <section style="text-align:center;background:#f8fafc;padding:20px 0 0;">
+    <img src="/images/test-confirmed-hero.png"
+         alt="Bag.ID confirmation image with orange dot tag"
+         style="max-width:600px;width:90%;height:auto;border-radius:12px;box-shadow:0 4px 20px rgba(0,0,0,0.08);" />
+  </section>
+
   <!-- Main -->
   <main class="hero">
     <div class="container center">
       <div class="card" style="max-width:480px;margin:auto;padding:32px;text-align:center;">
-        <img src="/images/BagID_10.jpg" alt="Bag.ID luggage with orange dot tag" class="rounded" style="max-width:100%;margin-bottom:20px;" />
         <h1>Test confirmed</h1>
-        <p class="lead">
-          Your <strong>Bag.ID</strong> tag is active and ready.  
+        <p class="lead" id="confirmation-text">
+          Your <strong>Bag.ID</strong> tag is active and ready.<br />
           No tracking, no logging — just quiet confirmation that your tag is in the system.
         </p>
+        <p id="bagid-display" style="font-size:18px;font-weight:600;color:#b64c1b;margin-top:8px;"></p>
+
         <p style="margin-top:24px;">
           If you ever need to check again, you can return to the
           <a href="/test.html">Test My Bag</a> page at any time.
@@ -61,5 +73,18 @@
       </div>
     </div>
   </footer>
+
+  <!-- Script -->
+  <script>
+    // Extract ?bagid=BAG-XXX-XXX from URL and display it
+    const params = new URLSearchParams(window.location.search);
+    const bagid = params.get("bagid");
+    const bagDisplay = document.getElementById("bagid-display");
+    if (bagid) {
+      bagDisplay.textContent = bagid.toUpperCase();
+    } else {
+      bagDisplay.textContent = "";
+    }
+  </script>
 </body>
 </html>
