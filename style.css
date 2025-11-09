@@ -225,3 +225,8 @@ img {
   object-fit: cover;
 }
 
+.hero {
+  display: block;
+  margin: auto;
+  width: 90%;
+}
