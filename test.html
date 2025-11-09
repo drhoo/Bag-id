@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Test Your Bag.ID Tag</title>
+  <meta name="description" content="Check that your Bag.ID tag is active. This test doesn’t track or locate anything — it simply confirms your tag is registered and ready." />
+  <link rel="icon" href="/favicon.ico" />
+  <link rel="stylesheet" href="/style.css" />
+</head>
+
+<body>
+  <!-- Header -->
+  <header class="site-header">
+    <div class="container row between center">
+      <a class="brand" href="/" aria-label="Bag.ID home">
+        <img src="/images/logo_640X184_TBG.png" alt="Bag.ID logo" class="logo" style="height:40px; width:auto;" />
+      </a>
+      <nav class="nav">
+        <a href="/">Home</a>
+        <a href="/privacy.html">Privacy</a>
+        <a href="/contact.html">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Main -->
+  <main class="hero">
+    <div class="container grid two">
+      <div class="hero-copy">
+        <h1>Test your <span class="quiet">Bag.ID</span> tag</h1>
+        <p class="lead">
+          You can check that your tag is active and registered — without tracking or revealing any data.
+          It’s a simple system heartbeat that reassures you everything is ready before you travel.
+        </p>
+
+        <form id="test-form" class="card" style="max-width:400px; margin-top:20px;">
+          <label for="bagid"><strong>Enter your Bag.ID code</strong></label><br/>
+          <input type="text" id="bagid" name="bagid" placeholder="e.g. BAG-112-879" required
+                 style="width:100%; padding:10px; margin:8px 0 12px; border:1px solid var(--line); border-radius:var(--radius-sm); font-size:16px;">
+          <button type="submit" class="btn btn-primary btn-block">Send Test Confirmation</button>
+          <p id="result" class="fine" style="margin-top:10px;"></p>
+        </form>
+
+        <p class="fine" style="margin-top:24px;">
+          This test does not track, locate, or store anything beyond the confirmation email.
+          You’ll receive a message confirming your tag is active within moments.
+        </p>
+      </div>
+
+      <div class="hero-media">
+        <figure class="device">
+          <img src="/images/BagID_09.jpg" class="rounded" alt="Traveler holding a suitcase handle with Bag.ID tag." />
+        </figure>
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container row between top">
+      <div class="foot-brand">
+        <strong>Bag.ID</strong><br />
+        <span class="muted">A Pebble System</span>
+        <p class="copyright">© 2025 Bag.ID — A Pebble System</p>
+      </div>
+      <div class="foot-links">
+        <a href="/privacy.html">Privacy</a>
+        <a href="/terms.html">Terms</a>
+        <a href="/contact.html">Contact</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById("test-form").addEventListener("submit", async (e) => {
+      e.preventDefault();
+      const bagid = document.getElementById("bagid").value.trim();
+      const result = document.getElementById("result");
+
+      result.textContent = "Sending test confirmation...";
+      result.style.color = "var(--muted)";
+
+      try {
+        const res = await fetch("/api/test-tag.js", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ bagid })
+        });
+
+        if (res.ok) {
+          result.textContent = "✅ Test email sent. Check your inbox for confirmation.";
+          result.style.color = "green";
+        } else {
+          result.textContent = "Something went wrong — please try again.";
+          result.style.color = "red";
+        }
+      } catch (err) {
+        result.textContent = "Network error — please try again later.";
+        result.style.color = "red";
+      }
+    });
+  </script>
+</body>
+</html>
