@@ -1,5 +1,4 @@
 import { testConfirmationEmail } from "../lib/emails.js";
-
 import { Resend } from "resend";
 
 // initialise resend
@@ -29,12 +28,15 @@ export default async function handler(req, res) {
 
   try {
     // 🔹 Look up owner’s email in Supabase
-    const response = await fetch(`${process.env.SUPABASE_URL}/rest/v1/tags?select=email&code=eq.${bagid}`, {
-      headers: {
-        apikey: process.env.SUPABASE_KEY,
-        Authorization: `Bearer ${process.env.SUPABASE_KEY}`,
-      },
-    });
+    const response = await fetch(
+      `${process.env.SUPABASE_URL}/rest/v1/tags?select=email&code=eq.${bagid}`,
+      {
+        headers: {
+          apikey: process.env.SUPABASE_KEY,
+          Authorization: `Bearer ${process.env.SUPABASE_KEY}`,
+        },
+      }
+    );
 
     const data = await response.json();
     if (!data || !data.length) {
@@ -43,17 +45,12 @@ export default async function handler(req, res) {
 
     const ownerEmail = data[0].email;
 
-    // 🔹 Send test confirmation email
+    // 🔹 Send test confirmation email (using new shared template)
     await resend.emails.send({
       from: "Bag.ID <noreply@bag.id>",
       to: ownerEmail,
       subject: `Bag.ID Test Confirmation — ${bagid}`,
-      html: `
-        <p>Hello,</p>
-        <p>This is a quick system check to confirm your Bag.ID tag <strong>${bagid}</strong> is active and registered.</p>
-        <p>No tracking or data has been stored — this is simply a confirmation email sent at your request.</p>
-        <p>Safe travels,<br><strong>The Bag.ID Team</strong><br><small>A Pebble System</small></p>
-      `,
+      html: testConfirmationEmail({ bagid }),
     });
 
     return res.status(200).json({ message: "Confirmation email sent" });
